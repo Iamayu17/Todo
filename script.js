@@ -1,6 +1,8 @@
 console.log("JS loaded");
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
+const completedList = document.getElementById("completed-list");
+const completedHeading = document.getElementById("completed-heading");
 
 function addTask() {
   if (inputBox.value === "") {
@@ -16,9 +18,15 @@ function addTask() {
   inputBox.value = "";
   saveData()
 }
-listContainer.addEventListener("click", function(e) {
+document.addEventListener("click", function(e) {
     if(e.target.tagName ==="LI"){
         e.target.classList.toggle("checked");
+        if(e.target.classList.contains("checked")){
+            completedList.appendChild(e.target);
+        }else{
+            listContainer.appendChild(e.target)
+        }
+        updateCompletedHeading();
         saveData()
         //classList used 
     }
@@ -28,11 +36,41 @@ listContainer.addEventListener("click", function(e) {
          //parentElement used
     }
     }, false);
-
+ // Code for regex check 
+    function removespecial(event){
+        const regex = /^[a-zA-Z0-9\s-()]*$/;
+        const input = event.key;
+        if(!regex.test(input)){
+            event.preventDefault();
+        }
+    }
+    
+//local storage functions
     function saveData(){
         localStorage.setItem("data", listContainer.innerHTML);
+        localStorage.setItem("completedList", completedList.innerHTML);
     }
-    function  loadData(){
-        listContainer.innerHTML = localStorage.getItem( "data" );
+    function loadData(){
+        if (localStorage.getItem("data")) {
+            listContainer.innerHTML = localStorage.getItem("data");
+        }
+        if (localStorage.getItem("completedList")) {
+            completedList.innerHTML = localStorage.getItem("completedList");
+            updateCompletedHeading();
+        }
     }
+
+    function updateCompletedHeading() {
+        if (completedList.children.length > 0) {
+            completedHeading.style.display = "block";
+        } else {
+            completedHeading.style.display = "none";
+        }
+    }
+ 
     loadData();
+
+   
+
+
+

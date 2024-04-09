@@ -108,3 +108,12 @@ footer {
     align-items: center;
 	bottom: 0;
 }
+#completed-heading{
+    margin-left: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+
+
+

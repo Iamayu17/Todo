@@ -11,14 +11,18 @@
       <div class="todo-app">
         <h2>To Do List</h2>
         <div class="row">
-            <input  type="text" id="input-box" placeholder="Enter your task here...."/>
-            <button onclick="addTask()">ADD</button>
+            <input  type="text" id="input-box" placeholder="Enter your task here...." onkeydown="removespecial(event)"/>
+            <button id="line-check" onclick="addTask()">ADD</button>
         </div>
         <ul id="list-container">
             <!-- <li class="checked">Task 1</li>
             <li>Task 2</li>
             <li>Task 3</li> -->
         </ul>
+        <h4 id="completed-heading">Accomplish</h4>
+            <ul id="completed-list">
+                <!-- Completed tasks will be moved here -->
+            </ul>
       </div>
       <footer>
         <p>
