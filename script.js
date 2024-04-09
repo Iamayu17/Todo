@@ -13,73 +13,69 @@ function addTask() {
     listContainer.appendChild(li);
     let span = document.createElement("span");
     span.innerHTML = "&#10008";
-    li.appendChild(span); 
+    li.appendChild(span);
   }
   inputBox.value = "";
-  saveData()
+  saveData();
 }
-document.addEventListener("click", function(e) {
-    if(e.target.tagName ==="LI"){
-        e.target.classList.toggle("checked");
-        if(e.target.classList.contains("checked")){
-            completedList.appendChild(e.target);
-        }else{
-            listContainer.appendChild(e.target)
-        }
-        updateCompletedHeading();
-        saveData()
-        //classList used 
+document.addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+      if (e.target.classList.contains("checked")) {
+        completedList.appendChild(e.target);
+      } else {
+        listContainer.appendChild(e.target);
+      }
+      updateCompletedHeading();
+      saveData();
+      //classList used
+    } else if (e.target.tagName === "SPAN") {
+      e.target.parentElement.remove("span");
+      saveData();
+      //parentElement used
     }
-    else if(e.target.tagName === "SPAN"){
-         e.target.parentElement.remove("span"); 
-         saveData()
-         //parentElement used
-    }
-    }, false);
- // Code for regex check 
-    function removespecial(event){
-        const regex = /^[a-zA-Z0-9\s-()]*$/;
-        const input = event.key;
-        if(!regex.test(input)){
-            event.preventDefault();
-        }
-    }
-    
+  },
+  false
+);
+// Code for regex check
+function removespecial(event) {
+  const regex = /^[a-zA-Z0-9\s-()]*$/;
+  const input = event.key;
+  if (!regex.test(input)) {
+    event.preventDefault();
+  }
+}
+
 //local storage functions
-    function saveData(){
-        localStorage.setItem("data", listContainer.innerHTML);
-        localStorage.setItem("completedList", completedList.innerHTML);
-    }
-    function loadData(){
-        if (localStorage.getItem("data")) {
-            listContainer.innerHTML = localStorage.getItem("data");
-        }
-        if (localStorage.getItem("completedList")) {
-            completedList.innerHTML = localStorage.getItem("completedList");
-            updateCompletedHeading();
-        }
-    }
-
-    function updateCompletedHeading() {
-        if (completedList.children.length > 0) {
-            completedHeading.style.display = "block";
-        } else {
-            completedHeading.style.display = "none";
-        }
-    }
- 
-    loadData();
-
-    function openSurveyForm() {
-        var modal = document.getElementById("surveyModal");
-        modal.style.display = "block";
-    }
-
-    // JavaScript to close the survey form modal
-    function closeSurveyForm() {
-        var modal = document.getElementById("surveyModal");
-        modal.style.display = "none";
-    }
-
-
-
+function saveData() {
+  localStorage.setItem("data", listContainer.innerHTML);
+  localStorage.setItem("completedList", completedList.innerHTML);
+}
+function loadData() {
+  if (localStorage.getItem("data")) {
+    listContainer.innerHTML = localStorage.getItem("data");
+  }
+  if (localStorage.getItem("completedList")) {
+    completedList.innerHTML = localStorage.getItem("completedList");
+    updateCompletedHeading();
+  }
+}
+function updateCompletedHeading() {
+  if (completedList.children.length > 0) {
+    completedHeading.style.display = "block";
+  } else {
+    completedHeading.style.display = "none";
+  }
+}
+loadData();
+function openSurveyForm() {
+  var modal = document.getElementById("surveyModal");
+  modal.style.display = "block";
+}
+// JavaScript to close the survey form modal
+function closeSurveyForm() {
+  var modal = document.getElementById("surveyModal");
+  modal.style.display = "none";
+}

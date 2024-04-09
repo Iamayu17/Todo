@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>To Do List</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
       <div class="todo-app">
         <h2>To-Do List</h2>
         <div class="row">
-            <input  type="text" id="input-box" placeholder="Enter your task here...." onkeydown="removespecial(event)" autocomplete="off"/>
-            <button id="line-check" onclick="addTask()">ADD</button>
+          <input
+            type="text"
+            id="input-box"
+            placeholder="Enter your task here...."
+            onkeydown="removespecial(event)"
+            autocomplete="off"
+          />
+          <button id="line-check" onclick="addTask()">ADD</button>
         </div>
         <ul id="list-container">
-            <!-- <li class="checked">Task 1</li>
+          <!-- <li class="checked">Task 1</li>
             <li>Task 2</li>
             <li>Task 3</li> -->
         </ul>
         <h4 id="completed-heading">Completed</h4>
-            <ul id="completed-list">
-                <!-- Completed tasks will be moved here -->
-            </ul>
+        <ul id="completed-list">
+          <!-- Completed tasks will be moved here -->
+        </ul>
       </div>
       <div id="surveyModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeSurveyForm()">&times;</span>
-            <h2>Feedback Form</h2><br>
-            <form action="https://formspree.io/f/mayrljnr" method="POST">
-                <!-- Your survey form fields go here -->
-                <label for="name">Name*:</label>
-                <input type="text" id="name" name="name" required><br><br>
-                <label for="email">Email*:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                <label for="mobile">Mobile:</label>
-                <input type="mobile" id="mobile" name="mobile"><br><br>
-                <label for="feedback">Feedback*:</label>
-                <input type="feedback" id="text" name="text" required><br><br>
-                <!-- Add more survey questions as needed -->
-                <button type="submit">Submit</button>
-            </form>
+          <span class="close" onclick="closeSurveyForm()">&times;</span>
+          <h2>Feedback Form</h2>
+          <br />
+          <form action="https://formspree.io/f/mayrljnr" method="POST">
+            <!-- Your survey form fields go here -->
+            <label for="name">Name*:</label>
+            <input type="text" id="name" name="name" required /><br /><br />
+            <label for="email">Email*:</label>
+            <input type="email" id="email" name="email" required /><br /><br />
+            <label for="mobile">Mobile:</label>
+            <input type="mobile" id="mobile" name="mobile" /><br /><br />
+            <label for="feedback">Feedback*:</label>
+            <input type="feedback" id="text" name="text" required /><br /><br />
+            <!-- Add more survey questions as needed -->
+            <button type="submit">Submit</button>
+          </form>
         </div>
-    </div>
+      </div>
       <footer>
         <p>
-          <button id="default" onclick="openSurveyForm()"><span><i class="fa fa-spinner fa-pulse"></i> Click Here </span><i class="fa-solid fa-circle-up"></i></button> <br/>
-          &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script><a style="text-decoration: none; color: black;" href="https://github.com/Iamayu17"><b> RoninItachi</b></a>
-          <br/>
-          <br/>
+          <button id="default" onclick="openSurveyForm()">
+            <span><i class="fa fa-spinner fa-pulse"></i> Click Here </span
+            ><i class="fa-solid fa-circle-up"></i>
+          </button>
+          <br />
+          &copy;
+          <script type="text/javascript">
+            document.write(new Date().getFullYear());
+          </script>
+          <a
+            style="text-decoration: none; color: black"
+            href="https://github.com/Iamayu17"
+            ><b> RoninItachi</b></a
+          >
+          <br />
+          <br />
         </p>
       </footer>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
