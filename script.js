@@ -70,7 +70,16 @@ document.addEventListener("click", function(e) {
  
     loadData();
 
-   
+    function openSurveyForm() {
+        var modal = document.getElementById("surveyModal");
+        modal.style.display = "block";
+    }
+
+    // JavaScript to close the survey form modal
+    function closeSurveyForm() {
+        var modal = document.getElementById("surveyModal");
+        modal.style.display = "none";
+    }
 
 
 
